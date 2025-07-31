@@ -7,15 +7,15 @@ import os
 load_dotenv()
 
 @function_tool
-def get_all_complaints_from_sheet(admin_pin:str) -> list:
+def get_all_students_data_from_sheet() -> list:
     """
     Retrieves all complaints from the Google Sheet and returns them as a list of dictionaries.
     Each dictionary contains: name, complaint_type, complaint_detail.
     """
-    sheet_url = "https://docs.google.com/spreadsheets/d/1Q_P9eTOJq7ld4y-j-cvYKFWBuUbXXJuWCMq2HjaTd9I/export?format=csv&gid=0"
+    sheet_url = "https://docs.google.com/spreadsheets/d/1tHXDBKJZJzY2fdSaZ3ysPH1ChumrgOmKtdizrcr8kHA/export?format=csv&gid=0"
     
-    if admin_pin != os.getenv("PIN"):
-        return [{"error": "Access Denied. Valid admin PIN required."}]
+    # if admin_pin != os.getenv("PIN"):
+    #     return [{"error": "Access Denied. Valid admin PIN required."}]
     
     response = requests.get(sheet_url)
     

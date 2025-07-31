@@ -7,7 +7,7 @@ from openai import AsyncOpenAI
 import asyncio
 # from get_data import get_all_complaints_data
 from post_data import post_complete_data_to_sheet
-from get_data import get_all_complaints_from_sheet
+from get_data import get_all_students_data_from_sheet
 from instructions import registration_agent_instructions
 # from whatsapp_sender import send_complaint_to_staff
 load_dotenv()
@@ -26,15 +26,13 @@ model = OpenAIChatCompletionsModel(
 )
 
 InnovistaCare = Agent(
-    name="Innovista Complaints Hanlde Agent",
+    name="Registration Clerk Agent",
     instructions=registration_agent_instructions,
     model=model,
-    tools=[post_complete_data_to_sheet,get_all_complaints_from_sheet],
+    tools=[post_complete_data_to_sheet,get_all_students_data_from_sheet],
 )
 
-
-
-# Streamlit App
+# Streamlit App 
 st.title("🎓 University Registration Agent")
 
 st.markdown("""
